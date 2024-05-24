@@ -1,38 +1,37 @@
 const mongoose = require("mongoose")
 
 const FormSchema = new mongoose.Schema({
-    FirstName :{
+    Name :{
         type:String,
         required:true
     },
-    LastName:{
+    Email:{
         type:String,
         required:true
     }, 
-    EmailAddress:{
-        type:String,
-        required:true
-    },
-    Address:{
-        type:String,
-        required:true
-    },
-    City :{
-        type:String,
-        required:true
-    },
     Country:{
         type:String,
-        required:true
+       
     },
     PostCode:{
-        type:Number,
+        type:String, 
+    },
+    Phoneno :{
+        type:String,
         required:true
     },
-    Phone :{
-        type:Number,
-        required:true
-    }
+    companyname:{
+        type:String,
+    },
+    joblevel:{
+        type:String,
+    },
+    jobtitle:{
+        type:String,
+    },
+    revenue:String,
+    industry:String,
+    empsize:String
 })
 
 module.exports =  mongoose.model("Form",FormSchema)
