@@ -8,9 +8,6 @@ const Formroute = require("./Routes/FormsRoutes")
 const morgan = require("morgan"); 
 const apicache = require("apicache"); 
 
-
-
-
 // middleware
 app.use(express.json())
 
@@ -21,8 +18,8 @@ app.use(morgan('dev'));
 //configure apicache  
 let cache = apicache.middleware 
   
-//caching all routes for 5 minutes 
-app.use(cache('1 minutes')) 
+// Apply cache only to GET requests
+app.get("/DownloadPaper", cache('1 minutes'), Formroute);
 
 
 app.use("/DownloadPaper",Formroute)
