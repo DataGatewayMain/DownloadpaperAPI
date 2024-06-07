@@ -5,11 +5,25 @@ require("dotenv/config")
 const app = express()
 const Formroute = require("./Routes/FormsRoutes")
 
+const morgan = require("morgan"); 
+const apicache = require("apicache"); 
+
+
+
 
 // middleware
 app.use(express.json())
 
 app.use(cors())
+
+app.use(morgan('dev')); 
+  
+//configure apicache  
+let cache = apicache.middleware 
+  
+//caching all routes for 5 minutes 
+app.use(cache('1 minutes')) 
+
 
 app.use("/DownloadPaper",Formroute)
 
